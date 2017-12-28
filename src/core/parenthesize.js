@@ -1,20 +1,23 @@
 import categorize from './categorize';
+import List from './typesystem/List';
 
-const parenthesize = (input, list = []) => {
+const parenthesize = (input, list = new List()) => {
   const token = input.shift();
-
+  
   if (token === undefined) {
-    return list.pop();
+    return list.last();
   }
+
   else if (token === '(') {
-    list.push(parenthesize(input));
-    return parenthesize(input, list);
+    return parenthesize(input, list.push(parenthesize(input)));
   }
   else if (token === ')') {
     return list;
   }
-
-  return parenthesize(input, list.concat(categorize(token)));
+  else {
+    return parenthesize(input, list.conj(categorize(token)));
+  }
 };
 
 export default parenthesize;
+  
