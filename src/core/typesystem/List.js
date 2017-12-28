@@ -1,4 +1,5 @@
 import util from 'util';
+import Nil from './Nil';
 
 class _List_ {
   constructor(...expr) {
@@ -15,9 +16,22 @@ class _List_ {
   [util.inspect.custom]() {
     return this.toString();
   }
+
+  get length() {
+    return this.value.length;
+  }
+
+  map(fn) {
+    const result = this.value.map((x, i) => fn(x, i));
+
+    return new _List_(...result);
+  }
   
-  
-  last() {
+  head() {
+    return this.value[0];
+  }
+
+  tail() {
     return this.value[this.value.length - 1];
   }
 

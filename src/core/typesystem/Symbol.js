@@ -14,12 +14,16 @@ class _Symbol_ {
     return this.toString();
   }
 
+  parseValue(x) {
+    return x.slice(1, x.length -1);
+  }
+
   get value() {
-    return this.expr;
+    return this.parseValue(this.expr);
   }
 
   set value(val) {
-    this.value = val;
+    this.value = this.parseValue(val);
   }
 }
 

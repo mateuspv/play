@@ -15,7 +15,7 @@ class _String_ {
   }
 
   get value() {
-    return this.expr.slice(1, -1);
+    return this.expr;
   }
 
   set value(val) {

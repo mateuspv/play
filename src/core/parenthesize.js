@@ -5,7 +5,7 @@ const parenthesize = (input, list = new List()) => {
   const token = input.shift();
   
   if (token === undefined) {
-    return list.last();
+    return list.tail();
   }
 
   else if (token === '(') {

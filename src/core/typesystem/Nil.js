@@ -1,13 +1,13 @@
 import util from 'util';
 
 class _Nil_ {
-  constructor(expr) {
-    this.expr = expr;
+  constructor() {
+    this.expr = 'nil';
     this.type = 'nil';
   }
 
   toString() {
-    return this.value;
+    return this.expr;
   }
   
   [util.inspect.custom]() {
@@ -15,11 +15,7 @@ class _Nil_ {
   }
 
   get value() {
-    return null;
-  }
-
-  set value(val) {
-    this.value = val;
+    return this.expr;
   }
 }
 
