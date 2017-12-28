@@ -1,7 +1,17 @@
+import util from 'util';
+
 class _Symbol_ {
   constructor(expr) {
     this.expr = expr;
     this.type = 'symbol';
+  }
+  
+  toString() {
+    return this.value;
+  }
+  
+  [util.inspect.custom]() {
+    return this.toString();
   }
 
   get value() {
