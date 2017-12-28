@@ -14,7 +14,7 @@ repl.start({
     if (cmd === '(\n)') {
       return callback(null);
     }
-    
+
     return callback(null, readEval(cmd));
   },
 });
