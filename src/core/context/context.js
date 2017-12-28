@@ -1,19 +1,19 @@
 class Context {
-  constructor(scope, parent) {
+  constructor(scope = {}, parent) {
     this.scope = scope;
     this.parent = parent;
   }
 
   get(identifier) {
-    if (identifier in this.scope) {
+    if (this.scope[identifier]) {
       return this.scope[identifier];
     }
 
-    if (this.parent !== undefined) {
+    if (this.parent) {
       return this.parent.get(identifier);
     }
 
-    throw new Error('Could not resolve symbol');
+    throw new Error(`Could not resolve symbol ${identifier}`);
   }
 }
 

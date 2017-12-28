@@ -25,7 +25,7 @@ const evaluate = (input, context = new Context(library)) => {
   }
 
   if (input.type === 'symbol') {
-    return context.get(input.value);
+      return context.get(input.value);
   }
 
   return input.value;
