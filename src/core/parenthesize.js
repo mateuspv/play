@@ -3,7 +3,7 @@ import List from './typesystem/List';
 
 const parenthesize = (input, list = new List()) => {
   const token = input.shift();
-  
+
   if (token === undefined) {
     return list.tail();
   }
@@ -14,10 +14,8 @@ const parenthesize = (input, list = new List()) => {
   else if (token === ')') {
     return list;
   }
-  else {
-    return parenthesize(input, list.conj(categorize(token)));
-  }
+
+  return parenthesize(input, list.conj(categorize(token)));
 };
 
 export default parenthesize;
-  

@@ -9,7 +9,7 @@ class _Keyword_ {
   toString() {
     return this.value;
   }
-  
+
   [util.inspect.custom]() {
     return this.toString();
   }

@@ -5,17 +5,17 @@ class _Symbol_ {
     this.expr = expr;
     this.type = 'symbol';
   }
-  
+
   toString() {
     return this.value;
   }
-  
+
   [util.inspect.custom]() {
     return this.toString();
   }
 
   parseValue(x) {
-    return x.slice(1, x.length -1);
+    return x.slice(1, x.length - 1);
   }
 
   get value() {

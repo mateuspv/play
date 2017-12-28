@@ -9,7 +9,7 @@ class _Nil_ {
   toString() {
     return this.expr;
   }
-  
+
   [util.inspect.custom]() {
     return this.toString();
   }

@@ -1,5 +1,4 @@
 import util from 'util';
-import Nil from './Nil';
 
 class _List_ {
   constructor(...expr) {
@@ -12,7 +11,7 @@ class _List_ {
     const exprs = this.value.map(exp => exp.toString()).join(' ');
     return `(${exprs})`;
   }
-  
+
   [util.inspect.custom]() {
     return this.toString();
   }
@@ -26,7 +25,7 @@ class _List_ {
 
     return new _List_(...result);
   }
-  
+
   head() {
     return this.value[0];
   }
@@ -38,7 +37,7 @@ class _List_ {
   push(x) {
     return new _List_(...this.value, x);
   }
-  
+
   conj(...x) {
     return new _List_(...this.value.concat(x));
   }

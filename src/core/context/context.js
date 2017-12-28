@@ -8,13 +8,13 @@ class Context {
     if (identifier in this.scope) {
       return this.scope[identifier];
     }
-    
+
     if (this.parent !== undefined) {
       return this.parent.get(identifier);
     }
-    
-    throw new Error(`Could not resolve symbol`);
-  };
+
+    throw new Error('Could not resolve symbol');
+  }
 }
 
 export default Context;
