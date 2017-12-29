@@ -1,5 +1,3 @@
-import util from 'util';
-
 import Context from '../context/context';
 
 class _Function_ {
@@ -8,12 +6,8 @@ class _Function_ {
     this.type = 'function';
   }
 
-  toString() {
+  inspect() {
     return `[Function ${this.name}]`;
-  }
-
-  [util.inspect.custom]() {
-    return this.toString();
   }
 
   get value() {

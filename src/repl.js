@@ -7,7 +7,7 @@ repl.start({
   prompt: '\x1b[33m►\x1b[0m ',
 
   writer(output) {
-    return output;
+    return output.inspect();
   },
 
   eval(cmd, context, filename, callback) {

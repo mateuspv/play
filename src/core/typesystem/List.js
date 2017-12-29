@@ -1,5 +1,3 @@
-import util from 'util';
-
 class _List_ {
   constructor(...expr) {
     this.expr = expr;
@@ -7,13 +5,9 @@ class _List_ {
     this.value = [...this.expr];
   }
 
-  toString() {
+  inspect() {
     const exprs = this.value.map(exp => exp.toString()).join(' ');
-    return `(${exprs})`;
-  }
-
-  [util.inspect.custom]() {
-    return this.toString();
+    return `[List ${exprs}]`;
   }
 
   get length() {

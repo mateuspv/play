@@ -1,17 +1,11 @@
-import util from 'util';
-
 class _Keyword_ {
   constructor(expr) {
     this.expr = expr;
     this.type = 'keyword';
   }
 
-  toString() {
-    return this.value;
-  }
-
-  [util.inspect.custom]() {
-    return this.toString();
+  inspect() {
+    return `[Keyword ${this.value}]`;
   }
 
   get value() {

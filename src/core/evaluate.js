@@ -3,9 +3,10 @@ import library from './context/library';
 import special from './context/special-forms';
 
 const evaluateList = (input, context, evaluate) => {
-  if (input.head() in special) {
-    const fn = special[input.head()];
-    return fn(input, context, evaluate);
+  const isSpecialKeyword = special[input.head().expr.toString()];
+
+  if (isSpecialKeyword) {
+    return isSpecialKeyword();
   }
 
   const list = input.map(x => evaluate(x, context));
@@ -33,7 +34,7 @@ const evaluate = (input, context = defaultContext) => {
     return context.get(input.value);
   }
 
-  return input.value;
+  return input;
 };
 
 export default evaluate;

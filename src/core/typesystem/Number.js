@@ -1,17 +1,11 @@
-import util from 'util';
-
 class _Number_ {
   constructor(expr) {
     this.expr = expr;
     this.type = 'number';
   }
 
-  toString() {
-    return this.value;
-  }
-
-  [util.inspect.custom]() {
-    return this.toString();
+  inspect() {
+    return `[Number ${this.value}]`;
   }
 
   get value() {

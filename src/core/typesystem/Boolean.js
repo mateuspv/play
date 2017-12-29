@@ -1,17 +1,11 @@
-import util from 'util';
-
 class _Boolean_ {
   constructor(expr) {
     this.expr = expr;
     this.type = 'boolean';
   }
 
-  toString() {
-    return this.value;
-  }
-
-  [util.inspect.custom]() {
-    return this.toString();
+  inspect() {
+    return `[Boolean ${this.value}]`;
   }
 
   get value() {
