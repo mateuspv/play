@@ -8,9 +8,9 @@ export default {
     const invoke = (form, context, evaluate) => {
       const [_, predicate, trueExpr, falseExpr] = form.value;
 
-      return evaluate(predicate, context).value  ?
-           evaluate(trueExpr, context) :
-           evaluate(falseExpr, context);
+      return evaluate(predicate, context).value ?
+        evaluate(trueExpr, context) :
+        evaluate(falseExpr, context);
     };
 
     sym.invoke = invoke;

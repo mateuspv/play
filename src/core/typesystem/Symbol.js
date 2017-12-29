@@ -4,18 +4,11 @@ class _Symbol_ {
   constructor(expr) {
     this.expr = expr;
     this.type = 'symbol';
+    this.value = this.expr;
   }
 
   inspect() {
     return chalk.magenta(this.value);
-  }
-
-  get value() {
-    return this.expr;
-  }
-
-  set value(val) {
-    this.value = val;
   }
 }
 

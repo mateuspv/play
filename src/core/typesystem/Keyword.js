@@ -4,18 +4,11 @@ class _Keyword_ {
   constructor(expr) {
     this.expr = expr;
     this.type = 'keyword';
+    this.value = this.expr;
   }
 
   inspect() {
     return chalk.yellow(this.value);
-  }
-
-  get value() {
-    return this.expr;
-  }
-
-  set value(val) {
-    this.value = val;
   }
 }
 

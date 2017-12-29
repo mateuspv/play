@@ -4,18 +4,11 @@ class _String_ {
   constructor(expr) {
     this.expr = expr;
     this.type = 'string';
+    this.value = this.expr;
   }
 
   inspect() {
     return chalk.cyan(this.value);
-  }
-
-  get value() {
-    return this.expr;
-  }
-
-  set value(val) {
-    this.value = val;
   }
 }
 

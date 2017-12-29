@@ -6,23 +6,23 @@ import _Nil_ from './typesystem/Nil';
 const evaluateList = (input, context, evaluate) => {
   const inputHead = input.head();
 
-  if(!inputHead) {
+  if (!inputHead) {
     return new _Nil_();
   }
 
   const isSpecialKeyword = special[inputHead.expr.toString()];
-  
+
   if (isSpecialKeyword) {
     return isSpecialKeyword.invoke(input, context, evaluate);
   }
-  
+
   const list = input.map(x => evaluate(x, context));
   const head = list.head();
 
-  if (list.head().type === 'function') {
-    return list.head().invoke(input, context, evaluate);
-  }  
-  
+  if (head.type === 'function') {
+    return head.invoke(input, context, evaluate);
+  }
+
   return list;
 };
 
