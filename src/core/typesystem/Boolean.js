@@ -2,18 +2,11 @@ class _Boolean_ {
   constructor(expr) {
     this.expr = expr;
     this.type = 'boolean';
+    this.value = expr === 'true';
   }
 
   inspect() {
     return `[Boolean ${this.value}]`;
-  }
-
-  get value() {
-    return this.expr;
-  }
-
-  set value(val) {
-    this.value = val;
   }
 }
 
