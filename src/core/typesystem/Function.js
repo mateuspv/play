@@ -1,13 +1,11 @@
-import Context from '../context/context';
-
 class _Function_ {
   constructor(name) {
     this.name = name;
-    this.type = 'function'
+    this.type = 'function';
   }
 
   invoke() {
-    return throw('missing function implementation')
+    throw Error('missing function implementation');
   }
 
   inspect() {
