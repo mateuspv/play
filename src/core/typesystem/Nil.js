@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 class _Nil_ {
   constructor() {
     this.expr = 'nil';
@@ -5,7 +7,7 @@ class _Nil_ {
   }
 
   inspect() {
-    return `[Nil ${this.expr}]`;
+    return chalk.gray(this.expr);
   }
 
   get value() {

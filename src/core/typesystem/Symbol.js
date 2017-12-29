@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 class _Symbol_ {
   constructor(expr) {
     this.expr = expr;
@@ -5,7 +7,7 @@ class _Symbol_ {
   }
 
   inspect() {
-    return `[Symbol ${this.value}]`;
+    return chalk.magenta(this.value);
   }
 
   get value() {

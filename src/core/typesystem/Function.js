@@ -1,5 +1,8 @@
+import chalk from 'chalk';
+
 class _Function_ {
   constructor(name) {
+    this.expr = 'function';
     this.name = name;
     this.type = 'function';
   }
@@ -9,7 +12,7 @@ class _Function_ {
   }
 
   inspect() {
-    return `[Function ${this.name}]`;
+    return chalk.red(`[Function ${this.name}]`);
   }
 
   get value() {

@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 import repl from 'repl';
+import chalk from 'chalk';
+
 import readEval from './core/index';
 
 repl.start({
-  prompt: '\x1b[33m►\x1b[0m ',
+  prompt: chalk.yellow('► '),
 
   eval(cmd, context, filename, callback) {
     if (cmd === '(\n)') {

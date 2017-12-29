@@ -1,15 +1,19 @@
 import _Symbol_ from '../typesystem/Symbol';
+import _Function_ from '../typesystem/Function';
 import Context from './context';
 
 export default {
   if: (() => {
     const sym = new _Symbol_('if');
-    const invoke = (input, context, evaluate) => {
-      const expr = input.head().value;
+    const invoke = (form, context, evaluate) => {
+      const [_, predicate, trueExpr, falseExpr] = form.value;
+
+      return evaluate(predicate, context).value  ?
+           evaluate(trueExpr, context) :
+           evaluate(falseExpr, context);
     };
 
     sym.invoke = invoke;
-
 
     return sym;
   })(),
@@ -30,7 +34,10 @@ export default {
       return evaluate(returnExpr, new Context(lambdaScope, context));
     };
 
-    sym.invoke = invoke;
+    const fn = new _Function_('lambda');
+    fn.invoke = invoke;
+
+    sym.invoke = () => fn;
 
     return sym;
   })()

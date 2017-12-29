@@ -2,7 +2,7 @@ const readEval = require('../../dist/core/index').default;
 
 const { assert } = require('chai');
 
-describe('Read -> Eval', () => {
+describe('lambda', () => {
   it('lambda should be a symbol', () => {
     const result = readEval('lambda');
 
@@ -11,10 +11,10 @@ describe('Read -> Eval', () => {
     assert.typeOf(result.invoke, 'function');
   });
 
-  it('define a lambda should return a symbol', () => {
+  it('define a lambda should return a function', () => {
     const result = readEval('(lambda (a) a)');
 
-    assert.equal('symbol', result.type);
+    assert.equal('function', result.type);
     assert.exists(result.invoke);
     assert.typeOf(result.invoke, 'function');
   });

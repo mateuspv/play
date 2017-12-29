@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 class _String_ {
   constructor(expr) {
     this.expr = expr;
@@ -5,7 +7,7 @@ class _String_ {
   }
 
   inspect() {
-    return `[String ${this.value}]`;
+    return chalk.cyan(this.value);
   }
 
   get value() {

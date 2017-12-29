@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 class _List_ {
   constructor(...expr) {
     this.expr = expr;
@@ -7,7 +9,10 @@ class _List_ {
 
   inspect() {
     const exprs = this.value.map(exp => exp.inspect()).join(' ');
-    return `[List ${exprs}]`;
+    const openParentheses = chalk.blue('(');
+    const closeParentheses = chalk.blue(')');
+
+    return openParentheses + exprs + closeParentheses;
   }
 
   get length() {

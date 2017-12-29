@@ -1,31 +1,34 @@
 import Context from './context/context';
 import library from './context/library';
 import special from './context/special-forms';
+import _Nil_ from './typesystem/Nil';
 
 const evaluateList = (input, context, evaluate) => {
-  const isSpecialKeyword = special[input.head().expr.toString()];
+  const inputHead = input.head();
 
-  if (isSpecialKeyword) {
-    return isSpecialKeyword;
+  if(!inputHead) {
+    return new _Nil_();
   }
 
+  const isSpecialKeyword = special[inputHead.expr.toString()];
+  
+  if (isSpecialKeyword) {
+    return isSpecialKeyword.invoke(input, context, evaluate);
+  }
+  
   const list = input.map(x => evaluate(x, context));
   const head = list.head();
 
-  if (head.invoke) {
-    return head.invoke(input, context, evaluate);
-  }
-
+  if (list.head().type === 'function') {
+    return list.head().invoke(input, context, evaluate);
+  }  
+  
   return list;
 };
 
 const defaultContext = new Context(special, new Context(library));
 
 const evaluate = (input, context = defaultContext) => {
-  if (input.type === 'function') {
-    return input;
-  }
-
   if (input.type === 'list') {
     return evaluateList(input, context, evaluate);
   }

@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 class _Boolean_ {
   constructor(expr) {
     this.expr = expr;
@@ -6,7 +8,7 @@ class _Boolean_ {
   }
 
   inspect() {
-    return `[Boolean ${this.value}]`;
+    return chalk.green(this.value);
   }
 }
 

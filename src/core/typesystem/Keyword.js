@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 class _Keyword_ {
   constructor(expr) {
     this.expr = expr;
@@ -5,7 +7,7 @@ class _Keyword_ {
   }
 
   inspect() {
-    return `[Keyword ${this.value}]`;
+    return chalk.yellow(this.value);
   }
 
   get value() {
