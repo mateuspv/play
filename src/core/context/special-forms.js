@@ -1,15 +1,40 @@
-import _Function_ from '../typesystem/Function';
+import _Symbol_ from '../typesystem/Symbol';
+import Context from '../context';
 
 export default {
-  if({
-    _, predicate, trueExpr, falseExpr,
-  }, context, interpret) {
-    return interpret(predicate, context) ?
-      interpret(trueExpr, context) :
-      interpret(falseExpr, context);
-  },
+  if: (() => {
+    const sym = new _Symbol_('if');
+    const invoke = (input, context, evaluate) => {
+      const expr = input.head().value;
+      
+      console.log('ok')
+    }
+    
+    sym.invoke = invoke;
+    
+    
+    return sym;
+  })(),
+  
+  lambda: (() => {
+    const sym = new _Symbol_('lambda');
+    const invoke = (input, context, evaluate) => {
+      const expr = input.head().value;
+      const body = expr[1];
+      const returnExpr = expr[2];
+      const args = input.tail();
+      
+      const lambdaScope = body.value.reduce((acc, x, i) => {
+        acc[x.value] = args[i];
+        return acc;
+      }, {});
+      
+      return evaluate(returnExpr, new Context(lambdaScope, context));
+    };
 
-  lambda() {
-    return new _Function_('lambda');
-  },
+    sym.invoke = invoke;
+    
+    return sym;
+  })()
+  ,
 };

@@ -6,7 +6,7 @@ class _List_ {
   }
 
   inspect() {
-    const exprs = this.value.map(exp => exp.toString()).join(' ');
+    const exprs = this.value.map(exp => exp.inspect()).join(' ');
     return `[List ${exprs}]`;
   }
 

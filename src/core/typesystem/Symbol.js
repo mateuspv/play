@@ -5,7 +5,7 @@ class _Symbol_ {
   }
 
   inspect() {
-    return `${this.value}`;
+    return `[Symbol ${this.value}]`;
   }
 
   get value() {

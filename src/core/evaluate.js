@@ -6,13 +6,13 @@ const evaluateList = (input, context, evaluate) => {
   const isSpecialKeyword = special[input.head().expr.toString()];
 
   if (isSpecialKeyword) {
-    return isSpecialKeyword();
+    return isSpecialKeyword;
   }
 
   const list = input.map(x => evaluate(x, context));
   const head = list.head();
 
-  if (head.type === 'function') {
+  if (head.invoke) {
     return head.invoke(input, context, evaluate);
   }
 
