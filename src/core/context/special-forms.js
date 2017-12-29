@@ -3,6 +3,28 @@ import _Function_ from '../typesystem/Function';
 import Context from './context';
 
 export default {
+  let: (() => {
+    const sym = new _Symbol_('let');
+    const invoke = (input, context, evaluate) => {
+      const expr = input.tail();
+      const body = expr[0];
+      const result = expr[1];
+      const letContext = body.value.reduce((acc, x) => {
+        const [key, val] = x.value;
+
+        acc.scope[key.expr] = evaluate(val, context);
+
+        return acc;
+      }, new Context({}, context));
+
+      return evaluate(result, letContext);
+    };
+
+    sym.invoke = invoke;
+
+    return sym;
+  })(),
+
   if: (() => {
     const sym = new _Symbol_('if');
     const invoke = (form, context, evaluate) => {
