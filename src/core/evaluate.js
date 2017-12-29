@@ -3,23 +3,28 @@ import library from './context/library';
 import special from './context/special-forms';
 
 const evaluateList = (input, context, evaluate) => {
-  const hasLength = input.length > 0;
-  const head = input.head();
-
-  if (hasLength && head.value in special) {
-    return special[head.value](input, context);
+  if (input.head() in special) {
+    const fn = special[input.head()];
+    return fn(input, context, evaluate);
   }
 
   const list = input.map(x => evaluate(x, context));
+  const head = list.head();
 
-  if (list.head().value === 'function') {
-    return list.head()(...list.tail());
+  if (head.type === 'function') {
+    return head.invoke(input, context, evaluate);
   }
 
   return list;
 };
 
-const evaluate = (input, context = new Context(library)) => {
+const defaultContext = new Context(special, new Context(library));
+
+const evaluate = (input, context = defaultContext) => {
+  if (input.type === 'function') {
+    return input;
+  }
+
   if (input.type === 'list') {
     return evaluateList(input, context, evaluate);
   }

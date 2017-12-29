@@ -31,6 +31,10 @@ class _List_ {
   }
 
   tail() {
+    return this.value.slice(1, this.value.length);
+  }
+
+  last() {
     return this.value[this.value.length - 1];
   }
 
